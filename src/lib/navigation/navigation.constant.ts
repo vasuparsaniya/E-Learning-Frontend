@@ -1,11 +1,6 @@
 export const PUBLIC_NAVIGATION_CONSTANT = {
   auth: {
-    login: {
-      view: '/login',
-    },
-    signUp: {
-      view: '/sign-up',
-    },
+    view: '/auth',
   },
 };
 

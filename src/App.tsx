@@ -1,5 +1,4 @@
-import React from 'react';
-import './assets/css/App.css';
+import React, { Suspense } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -20,7 +19,9 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      <RouterProvider router={router} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <RouterProvider router={router} />
+      </Suspense>
     </QueryClientProvider>
   );
 };
