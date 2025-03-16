@@ -5,7 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { SignupSchema } from '../../validation';
 
 type SignUpFormType = {
-  name: string;
+  first_name: string;
+  last_name: string;
   email: string;
   password: string;
 };
@@ -41,11 +42,19 @@ const SignupComponent = (props: Props) => {
       </p>
       <Input
         className="rounded-[8px] p-[4px]"
-        name="name"
-        labelName="Name"
+        name="first_name"
+        labelName="First Name"
         register={register}
-        placeholder="Enter your name"
-        error={errors.name}
+        placeholder="Enter your first name"
+        error={errors.first_name}
+      />
+      <Input
+        className="rounded-[8px] p-[4px]"
+        name="last_name"
+        labelName="Last Name"
+        register={register}
+        placeholder="Enter your last name"
+        error={errors.last_name}
       />
       <Input
         className="rounded-[8px] p-[4px]"

@@ -42,7 +42,7 @@ export default [
     },
   },
   {
-    files: ['**/*.{mjs,cjs,jsx,tsx'], // Other file types
+    files: ['**/*.{mjs,cjs,jsx,tsx'],
     rules: {
       'no-unused-vars': 'error',
     },
