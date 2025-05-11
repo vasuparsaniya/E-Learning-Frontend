@@ -3,6 +3,7 @@ import Button from 'src/lib/common/components/button/Button';
 import Input from 'src/lib/common/components/input/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignupSchema } from '../../validation';
+import { useSignup } from '../../services';
 
 type SignUpFormType = {
   first_name: string;
@@ -28,8 +29,22 @@ const SignupComponent = (props: Props) => {
     register,
   } = formMethods;
 
+  // ** API **
+  const { signup, isLoading: signupLoading, error } = useSignup();
+
   const onSubmit = handleSubmit(async (value: SignUpFormType) => {
     console.log('===========submit value', value);
+    const payload = {
+      firstName: value.first_name,
+      lastName: value.last_name,
+      email: value.email,
+      password: value.password,
+    };
+    const data = await signup({
+      ...payload,
+    });
+    if (data && !error) {
+    }
   });
 
   return (

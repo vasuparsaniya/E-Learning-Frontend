@@ -1,1 +1,1 @@
-export const { REACT_NODE_ENV } = process.env;
+export const { REACT_APP_SERVER_URL, REACT_APP_NODE_ENV } = process.env;

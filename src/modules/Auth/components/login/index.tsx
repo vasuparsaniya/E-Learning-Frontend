@@ -3,6 +3,7 @@ import Input from 'src/lib/common/components/input/Input';
 import { LoginSchema } from '../../validation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { useSignup } from '../../services';
 
 type LoginFormType = {
   email: string;

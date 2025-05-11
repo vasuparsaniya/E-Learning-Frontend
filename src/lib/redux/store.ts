@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import authReducer from './slices/auth.slice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
-import { REACT_NODE_ENV } from '../config';
+import { REACT_APP_NODE_ENV } from '../config';
 
 // 🔹 Persist config for only selected reducers
 export const persistConfig = {
@@ -21,7 +21,7 @@ const persistedReducer = persistReducer(persistConfig, combineReducer);
 
 export const store = configureStore({
   reducer: persistedReducer, // ✅ Use persisted reducers
-  devTools: REACT_NODE_ENV === 'Production' ? false : true,
+  devTools: REACT_APP_NODE_ENV === 'Production' ? false : true,
 });
 
 export const persistor = persistStore(store); // ✅ Create persistor
