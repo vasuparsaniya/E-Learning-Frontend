@@ -7,9 +7,11 @@ import { PublicRoutes } from './public-router';
 export const PrivateRoutes: RoutesType[] = [
   {
     element: <ProtectedRoute />,
+    index: false,
+    errorElement: <p>hello error element handle error boundary</p>, // common error boundry element
     children: [
       {
-        path: '',
+        path: '/dashboard',
         element: <></>,
       },
     ],

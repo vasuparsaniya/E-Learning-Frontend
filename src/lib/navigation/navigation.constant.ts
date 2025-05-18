@@ -4,4 +4,8 @@ export const PUBLIC_NAVIGATION_CONSTANT = {
   },
 };
 
-export const PRIVATE_NAVIGATION_CONSTANT = {};
+export const PRIVATE_NAVIGATION_CONSTANT = {
+  dashboard: {
+    view: '/dashboard',
+  },
+};

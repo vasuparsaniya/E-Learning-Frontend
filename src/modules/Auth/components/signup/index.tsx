@@ -4,18 +4,22 @@ import Input from 'src/lib/common/components/input/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignupSchema } from '../../validation';
 import { useSignup } from '../../services';
+import { useAuthenticationHandler } from '../../hooks/useAuthenticationHandler';
+import { AUTHENTICATION_TAB } from '../../types';
 
-type SignUpFormType = {
+export type SignUpFormType = {
   first_name: string;
   last_name: string;
   email: string;
   password: string;
 };
 
-type Props = {};
+type Props = {
+  setActiveTab: React.Dispatch<React.SetStateAction<AUTHENTICATION_TAB>>;
+};
 
 const SignupComponent = (props: Props) => {
-  const {} = props;
+  const { setActiveTab } = props;
 
   // ** Form **
   const formMethods = useForm<SignUpFormType>({
@@ -29,22 +33,19 @@ const SignupComponent = (props: Props) => {
     register,
   } = formMethods;
 
-  // ** API **
-  const { signup, isLoading: signupLoading, error } = useSignup();
+  // ** Custom Hook **
+  const { signupHandler, signupLoading } = useAuthenticationHandler({
+    setActiveTab,
+  });
 
   const onSubmit = handleSubmit(async (value: SignUpFormType) => {
-    console.log('===========submit value', value);
     const payload = {
       firstName: value.first_name,
       lastName: value.last_name,
       email: value.email,
       password: value.password,
     };
-    const data = await signup({
-      ...payload,
-    });
-    if (data && !error) {
-    }
+    await signupHandler({ payload });
   });
 
   return (
@@ -88,7 +89,7 @@ const SignupComponent = (props: Props) => {
         error={errors.password}
       />
       <Button
-        isDisable={false}
+        isDisable={signupLoading}
         text="Signup"
         className="bg-slate-950"
         onClick={onSubmit}

@@ -3,17 +3,20 @@ import Input from 'src/lib/common/components/input/Input';
 import { LoginSchema } from '../../validation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { useSignup } from '../../services';
+import { useAuthenticationHandler } from '../../hooks/useAuthenticationHandler';
+import { AUTHENTICATION_TAB } from '../../types';
 
-type LoginFormType = {
+export type LoginFormType = {
   email: string;
   password: string;
 };
 
-type Props = {};
+type Props = {
+  setActiveTab: React.Dispatch<React.SetStateAction<AUTHENTICATION_TAB>>;
+};
 
 const LoginComponent = (props: Props) => {
-  const {} = props;
+  const { setActiveTab } = props;
 
   // ** Form **
   const formMethods = useForm<LoginFormType>({
@@ -27,8 +30,17 @@ const LoginComponent = (props: Props) => {
     register,
   } = formMethods;
 
+  // ** Custom Hook **
+  const { loginHandler, loginLoading } = useAuthenticationHandler({
+    setActiveTab,
+  });
+
   const onSubmit = handleSubmit(async (value: LoginFormType) => {
-    console.log('=============login submit', value);
+    const payload = {
+      email: value.email,
+      password: value.password,
+    };
+    await loginHandler({ payload });
   });
 
   return (
@@ -57,7 +69,7 @@ const LoginComponent = (props: Props) => {
         type="password"
       />
       <Button
-        isDisable={false}
+        isDisable={loginLoading}
         text="Login"
         className="bg-slate-950"
         onClick={onSubmit}

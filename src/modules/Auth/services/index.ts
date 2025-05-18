@@ -14,3 +14,16 @@ export const useSignup = () => {
   };
   return { signup, isLoading, error };
 };
+
+export const useLogin = () => {
+  const [postRequest, isLoading, error] = usePostRequest();
+
+  const login = async (
+    data: Record<string, any> = {},
+    config: AxiosRequestConfig<Record<string, any>> = {},
+  ) => {
+    const response = await postRequest(`${path}/login`, data, config);
+    return response;
+  };
+  return { login, isLoading, error };
+};

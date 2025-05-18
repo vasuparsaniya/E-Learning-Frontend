@@ -28,12 +28,14 @@ const Authentication = () => {
             </p>
           </div>
           <div className="flex flex-col gap-2 w-full p-[20px] bg-slate-50 rounded-[12px]">
-            {activeTab === AUTHENTICATION_TAB.SIGNUP && <SignupComponent />}
-            {activeTab === AUTHENTICATION_TAB.LOGIN && <LoginComponent />}
+            {activeTab === AUTHENTICATION_TAB.SIGNUP && (
+              <SignupComponent setActiveTab={setActiveTab} />
+            )}
+            {activeTab === AUTHENTICATION_TAB.LOGIN && (
+              <LoginComponent setActiveTab={setActiveTab} />
+            )}
           </div>
         </div>
-
-        {/* <Button onClick={() => {}} text="save" /> */}
       </div>
     </>
   );
