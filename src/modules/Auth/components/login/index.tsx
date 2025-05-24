@@ -1,5 +1,5 @@
-import Button from 'src/lib/common/components/button/Button';
-import Input from 'src/lib/common/components/input/Input';
+import Input from '@/lib/common/components/input/Input';
+import Button from '@/lib/common/components/button/Button';
 import { LoginSchema } from '../../validation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';

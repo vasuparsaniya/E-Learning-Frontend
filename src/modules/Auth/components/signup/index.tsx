@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
-import Button from 'src/lib/common/components/button/Button';
-import Input from 'src/lib/common/components/input/Input';
+import Button from '@/lib/common/components/button/Button';
+import Input from '@/lib/common/components/input/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SignupSchema } from '../../validation';
 import { useSignup } from '../../services';

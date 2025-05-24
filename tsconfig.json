@@ -2,9 +2,9 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "baseUrl": ".",
-    // "paths": {
-    //   "@/*": ["./src/*"]
-    // },
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

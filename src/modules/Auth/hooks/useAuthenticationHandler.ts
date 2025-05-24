@@ -3,7 +3,7 @@ import { LoginFormType } from '../components/login';
 import { SignUpFormType } from '../components/signup';
 import { useLogin, useSignup } from '../services';
 import { AUTHENTICATION_TAB } from '../types';
-import { PRIVATE_NAVIGATION_CONSTANT } from 'src/lib/navigation/navigation.constant';
+import { PRIVATE_NAVIGATION_CONSTANT } from '@/lib/navigation/navigation.constant';
 
 type AuthenticationHandlerProps = {
   setActiveTab: React.Dispatch<React.SetStateAction<AUTHENTICATION_TAB>>;

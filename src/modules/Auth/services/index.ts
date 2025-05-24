@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios';
-import { usePostRequest } from 'src/lib/hook/useAxios';
+import { usePostRequest } from '@/lib/hook/useAxios';
 
 const path = '/auth';
 export const useSignup = () => {

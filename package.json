@@ -23,8 +23,8 @@
     "yup": "^1.6.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "webpack serve",
+    "build": "webpack --config webpack.config.js",
     "prepare": "husky install"
   },
   "eslintConfig": {
@@ -50,16 +50,27 @@
     "{src,src/**/*}.{tsx,ts}": "eslint"
   },
   "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
     "@eslint/js": "^9.17.0",
     "@tanstack/eslint-plugin-query": "^5.66.1",
     "@types/eslint__js": "^8.42.3",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@types/redux-persist": "^4.0.0",
+    "babel-loader": "^10.0.0",
     "eslint": "^8.57.1",
+    "fork-ts-checker-webpack-plugin": "^9.1.0",
+    "html-webpack-plugin": "^5.6.3",
     "husky": "^8.0.0",
     "lint-staged": "^15.3.0",
     "typescript": "^4.9.5",
-    "typescript-eslint": "^8.18.2"
+    "typescript-eslint": "^8.18.2",
+    "webpack": "^5.99.9",
+    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
   }
 }
