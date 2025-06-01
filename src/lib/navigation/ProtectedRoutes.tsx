@@ -7,6 +7,7 @@ const ProtectedRoute = () => {
   // const [cookies] = useCookies(['token']);
   // console.log('cookies');
   // console.log(cookies);
+  console.log('========ProtectedRoute call');
   return false ? (
     <Outlet />
   ) : (

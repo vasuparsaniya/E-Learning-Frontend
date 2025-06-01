@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { AUTHENTICATION_TAB } from './types';
 import SignupComponent from './components/signup';

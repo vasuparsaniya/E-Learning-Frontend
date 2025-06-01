@@ -1,3 +1,4 @@
+import React from 'react';
 import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form';
 
 type Props<T extends FieldValues> = {
