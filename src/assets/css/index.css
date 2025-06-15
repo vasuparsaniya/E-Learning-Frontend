@@ -1,5 +1,10 @@
-@tailwind base;
-@tailwind components;
+/**always import top/
+/* common component style */
+
+@import './common/button/button.css';
+@import './common/input/input.css';
+
+@import 'tailwindcss/preflight';
 @tailwind utilities;
 
 /* global style */
@@ -14,8 +19,3 @@ html {
   font-variation-settings: 'wdth' 100;
   font-size: 20px;
 }
-
-/* common component style */
-
-@import './common/button/button.css';
-@import './common/input/input.css';

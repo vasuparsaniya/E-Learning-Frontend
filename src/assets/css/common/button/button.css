@@ -1,4 +1,8 @@
-@tailwind components;
+@tailwind utilities;
+/*
+@reference "tailwindcss" required for tailwind class use
+*/
+@reference "tailwindcss";
 
 @layer components {
   .button {

@@ -1,10 +1,10 @@
-@tailwind components;
+@tailwind utilities;
+/* @reference "tailwindcss"; */
 
 @layer components {
   .placeHolder {
-    @apply placeholder:opacity-50 placeholder-text;
+    @apply placeholder:opacity-50;
   }
-
   .placeholder-text {
     @apply text-[18px];
   }

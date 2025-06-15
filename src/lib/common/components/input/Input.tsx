@@ -32,7 +32,7 @@ const Input = <T extends FieldValues>(props: Props<T>) => {
           <span className={`${labelClass}`}>{labelName}</span>
         )}
         <input
-          className={`outline-none ${className} ${placeHolderClass}`}
+          className={`outline-none ${className} ${placeHolderClass} placeholder-text`}
           {...(register ? register(name as any) : {})}
           {...rest}
         />
