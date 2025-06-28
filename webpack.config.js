@@ -1,12 +1,27 @@
-const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-// const dotenv = require('dotenv');
-// dotenv.config();
-const Dotenv = require('dotenv-webpack');
+const path = require('path');
+const dotenv = require('dotenv');
 
-const dotenvFilename = '.env.development';
+/**dotenv-webpack package replace static value of env variable during build time
+ * run-time value not get from env
+ * without use of this runtime env variable value get
+ */
+// const Dotenv = require('dotenv-webpack');
+// const dotenvFilename = '.env.development';
+
+// Load environment variables from .env file
+const env =
+  dotenv.config({ path: path.resolve(__dirname, '.env.development') }).parsed ||
+  {};
+
+// Convert it to be used with DefinePlugin
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {
   mode: 'development',
@@ -44,9 +59,11 @@ module.exports = {
     }),
     new ForkTsCheckerWebpackPlugin(),
     // new BundleAnalyzerPlugin(),
-    new Dotenv({
-      path: dotenvFilename,
-    }),
+    // new Dotenv({
+    //   // path: dotenvFilename,
+    //   path: path.resolve(__dirname, dotenvFilename), // specify your env file
+    // }),
+    new webpack.DefinePlugin(envKeys),
   ],
   devServer: {
     hot: true,

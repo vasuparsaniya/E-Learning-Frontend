@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { AUTHENTICATION_TAB } from './types';
 import SignupComponent from './components/signup';
 import LoginComponent from './components/login';
+import { useSelector } from 'react-redux';
+import { getIsAuthenticate } from '@/lib/redux/slices/auth.slice';
+import { useNavigate } from 'react-router-dom';
+import { PRIVATE_NAVIGATION_CONSTANT } from '@/lib/navigation/navigation.constant';
 
 const Authentication = () => {
+  // ** Hooks **
+  const navigate = useNavigate();
+  // ** Redux **
+  const isAuthenticated = useSelector(getIsAuthenticate);
+  // ** State **
   const [activeTab, setActiveTab] = useState<AUTHENTICATION_TAB>(
     AUTHENTICATION_TAB.SIGNUP,
   );
   const activeTabClass = 'bg-slate-50 rounded-[6px]';
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      // Redirect to dashboard or home page if already authenticated
+      navigate(PRIVATE_NAVIGATION_CONSTANT.dashboard.view);
+    }
+  }, [isAuthenticated]);
 
   return (
     <>

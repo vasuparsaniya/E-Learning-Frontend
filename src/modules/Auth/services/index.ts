@@ -27,3 +27,16 @@ export const useLogin = () => {
   };
   return { login, isLoading, error };
 };
+
+export const useLoginUser = () => {
+  const [postRequest, isLoading, error] = usePostRequest();
+
+  const loginUser = async (
+    data: Record<string, any> = {},
+    config: AxiosRequestConfig<Record<string, any>> = {},
+  ) => {
+    const response = await postRequest(`${path}/login-user`, data, config);
+    return response;
+  };
+  return { loginUser, isLoading, error };
+};
